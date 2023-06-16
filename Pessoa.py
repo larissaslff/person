@@ -7,22 +7,32 @@ class Pessoa:
         self.comendo = False
 
     def falar(self, subject):
-        if not self.falando:
+        if not self.falando and not self.comendo:
             self.falando = True
-            return f'Estou falando sobre {subject}'
+        if self.comendo:
+            return 'Não posso falar porque estou comendo'
 
+        return f'Estou falando sobre {subject}'
 
     def pararDeFalar(self):
         if self.falando:
             self.falando = False
             return 'Estou parando de falar'
         else:
-            return 'Eu não posso parar, pois não estava falando'
+            return 'Eu não posso parar de falar, pois não estava falando'
 
 
     def comer(self, comida):
-        if not self.comendo:
+        if not self.comendo and not self.falando:
             self.comendo = True
             return f'Estou comendo {comida}'
+        if self.falando:
+            return 'Não posso falar de boca cheia!'
         else:
             return 'Já estou comendo!!'
+
+
+    def paraDeComer(self):
+        if self.comendo:
+            self.comendo = False
+            return 'Parei de comer'
