@@ -4,6 +4,7 @@ class Pessoa:
         self.idade = idade
         self.cpf = cpf
         self.falando = False
+        self.comendo = False
 
     def falar(self, subject):
         if not self.falando:
@@ -17,3 +18,11 @@ class Pessoa:
             return 'Estou parando de falar'
         else:
             return 'Eu não posso parar, pois não estava falando'
+
+
+    def comer(self, comida):
+        if not self.comendo:
+            self.comendo = True
+            return f'Estou comendo {comida}'
+        else:
+            return 'Já estou comendo!!'
